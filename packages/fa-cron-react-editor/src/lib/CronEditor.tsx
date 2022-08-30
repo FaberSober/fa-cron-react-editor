@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Tabs from './components/Tabs'
+import { Tabs, Label } from './components'
 import Second from './panel/Second';
 import type { CronEditorProps } from './interface'
 
@@ -19,6 +19,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
         setSecond(ss[0])
     }, [value])
 
+    const ss = cron.split(' ')
     return (
         <div className='fa-cron-react-editor-main' style={style}>
             <Tabs
@@ -35,7 +36,24 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                 onChange={(v) => { console.log('v',v); setTab(v) }}
             />
 
-            <Second value={second} onChange={setSecond} />
+            <div style={{ margin: '12px', height: 300 }}>
+                <Second value={second} onChange={setSecond} visible={tab === 'second'} />
+            </div>
+
+            <div style={{ padding: '12px 0', borderTop: '1px solid #CCC' }}>
+                <div className='fa-cron-react-editor-flex-row-center'>
+                    <div style={{ marginRight: 12 }}>表达式字段</div>
+                    <div className='fa-cron-react-editor-flex-row-center'>
+                        <Label title='秒'   value={ss[0]} />
+                        <Label title='分钟' value={ss[1]} />
+                        <Label title='小时' value={ss[2]} />
+                        <Label title='日'   value={ss[3]} />
+                        <Label title='月'   value={ss[4]} />
+                        <Label title='周'   value={ss[5]} />
+                        <Label title='年'   value={ss.length > 6 ? ss[6] : ''} />
+                    </div>
+                </div>
+            </div>
         </div>
     )
 };

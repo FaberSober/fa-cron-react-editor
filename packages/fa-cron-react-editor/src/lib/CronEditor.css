@@ -9,6 +9,7 @@
 
 .fa-cron-react-editor-tab {
     display: flex;
+    background-color: #EEE;
 }
 
 .fa-cron-react-editor-tab-item,
@@ -31,11 +32,42 @@
 /* ------------------------------------------- tab ------------------------------------------- */
 
 
+/* ------------------------------------------- lablel ------------------------------------------- */
+
+.fa-cron-react-editor-lablel-title {
+    font-size: 10px;
+    color: #FFF;
+    background-color: #429fff;
+    width: 80px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fa-cron-react-editor-lablel-value {
+    font-size: 14px;
+    color: #43a6fe;
+    background-color: #eeeeee;
+    width: 80px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /* ------------------------------------------- panel ------------------------------------------- */
 
 .fa-cron-react-editor-flex-row-center {
     display: flex;
     align-items: center;
+}
+
+.fa-cron-react-editor-panel-item {
+    display: flex;
+    align-items: center;
+    padding-bottom: 12px;
 }
 
 .fa-cron-react-editor-input {

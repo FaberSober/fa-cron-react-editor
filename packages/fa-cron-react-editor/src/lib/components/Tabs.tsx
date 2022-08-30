@@ -3,7 +3,6 @@ import type { TabsProps } from '../interface'
 
 
 export default function Tabs({ items, activeKey, onChange }: TabsProps) {
-    console.log('Tabs', activeKey)
     return (
         <div className='fa-cron-react-editor-tab'>
             {items.map((item) => {

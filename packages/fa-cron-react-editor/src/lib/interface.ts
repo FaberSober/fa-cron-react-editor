@@ -24,7 +24,13 @@ export enum SlotType {
     ITERATOR = 'iterator', // 1,2,3
 }
 
-export interface SlotBase {
+export interface PanelBase {
+    visible?: boolean;
     value: string;
     onChange: (v:string) => void;
+}
+
+export interface LabelProps {
+    title: string;
+    value: string;
 }
