@@ -70,6 +70,12 @@
     padding-bottom: 12px;
 }
 
+.fa-cron-react-editor-panel-label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
 .fa-cron-react-editor-input {
     width: 50px;
 }

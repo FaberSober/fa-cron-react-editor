@@ -4,29 +4,41 @@ import Second from './panel/Second';
 import type { CronEditorProps } from './interface'
 
 
-export default function CronEditor({ value, onChange, style }: CronEditorProps) {
-    const [cron, setCron] = useState<string>('* * * * * ?');
-    const [tab, setTab] = useState<string>('second');
+const DEFAULT_CRON = '* * * * * ?';
 
-    const [second, setSecond] = useState<string>('*');
+export default function CronEditor({ value, onChange, style }: CronEditorProps) {
+    const [cronArr, setCronArr] = useState<string[]>(DEFAULT_CRON.split(' '));
+    const [tab, setTab] = useState<string>('second');
 
     useEffect(() => {
         if (value === undefined) return;
-
-        setCron(value)
-
-        const ss = value.split(' ');
-        setSecond(ss[0])
+        handleChangeCron(value)
     }, [value])
 
-    function handleChangeCron(v:string) {
-        setCron(v);
-        if (onChange) {
-            onChange(v)
+    useEffect(() => {
+        const newCron = cronArr.join(' ')
+        if (onChange && newCron !== value) {
+            onChange(newCron)
         }
+    }, [cronArr])
+
+    function handleChangeCronArr(index: number, newValue: string) {
+        const newArr = [ ...cronArr ];
+        newArr[index] = newValue;
+        setCronArr(newArr)
     }
 
-    const ss = cron.split(' ')
+    function handleChangeCron(v:string) {
+        const newArr = v.split(' ')
+        if (newArr.length < 6) {
+            for (let i = newArr.length; i < 6; i+=1) {
+                newArr.push(i === 5 ? '?' : '*')
+            }
+        }
+        setCronArr(newArr);
+    }
+
+    const cron = cronArr.join(' ')
     return (
         <div className='fa-cron-react-editor-main' style={style}>
             <Tabs
@@ -44,24 +56,28 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
             />
 
             <div style={{ margin: '12px', height: 300 }}>
-                <Second value={second} onChange={setSecond} visible={tab === 'second'} />
+                <Second value={cronArr[0]} onChange={(v) => handleChangeCronArr(0, v)} visible={tab === 'second'} />
             </div>
 
-            <div style={{ padding: '12px 0', borderTop: '1px solid #CCC' }}>
-                <div className='fa-cron-react-editor-flex-row-center'>
-                    <div style={{ marginRight: 12 }}>表达式字段</div>
+            <div style={{ padding: '12px', borderTop: '1px solid #CCC' }}>
+                <div className='fa-cron-react-editor-panel-item'>
+                    <div style={{ width: 100 }}>表达式字段</div>
                     <div className='fa-cron-react-editor-flex-row-center'>
-                        <Label title='秒'   value={ss[0]} />
-                        <Label title='分钟' value={ss[1]} />
-                        <Label title='小时' value={ss[2]} />
-                        <Label title='日'   value={ss[3]} />
-                        <Label title='月'   value={ss[4]} />
-                        <Label title='周'   value={ss[5]} />
-                        <Label title='年'   value={ss[6]} />
+                        <Label value={cronArr[0]} title='秒'   />
+                        <Label value={cronArr[1]} title='分钟' />
+                        <Label value={cronArr[2]} title='小时' />
+                        <Label value={cronArr[3]} title='日'   />
+                        <Label value={cronArr[4]} title='月'   />
+                        <Label value={cronArr[5]} title='周'   />
+                        <Label value={cronArr[6]} title='年'   />
                     </div>
                 </div>
-                <div>
+                <div className='fa-cron-react-editor-panel-item'>
+                    <div style={{ width: 100 }}>Cron表达式</div>
                     <input value={cron} onChange={e => handleChangeCron(e.target.value)} />
+                </div>
+                <div>
+                    <div style={{ marginRight: 12 }}>最近5次运行时间</div>
                 </div>
             </div>
         </div>
