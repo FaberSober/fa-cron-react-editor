@@ -33,6 +33,7 @@ export interface PanelBase {
 export interface LabelProps {
     title: string;
     value: string;
+    style?: CSSProperties;
 }
 
 export interface CheckboxProps {

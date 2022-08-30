@@ -5,7 +5,7 @@ import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
 
-export default function Second({ visible, value, onChange }: PanelBase) {
+export default function Minute({ visible, value, onChange }: PanelBase) {
     const [type, setType] = useState<SlotType>(SlotType.ALL);
 
     const [range0, setRange0] = useState<string>('1');
