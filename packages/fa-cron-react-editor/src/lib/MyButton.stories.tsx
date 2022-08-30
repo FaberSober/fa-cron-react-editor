@@ -9,7 +9,6 @@ export default meta;
 
 export const Primary: ComponentStoryObj<typeof MyButton> = {
     args: {
-        disabled: false,
         children: 'Hello',
     },
 };
