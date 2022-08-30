@@ -34,3 +34,10 @@ export interface LabelProps {
     title: string;
     value: string;
 }
+
+export interface CheckboxProps {
+    label: string;
+    checked: boolean;
+    onChange: (v: boolean) => void;
+    style?: CSSProperties;
+}

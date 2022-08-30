@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react'
+import { Checkbox } from '../components'
+import { genArray } from '../utils/utils'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
@@ -9,18 +11,36 @@ export default function Second({ visible, value, onChange }: PanelBase) {
     const [range0, setRange0] = useState<string>('1');
     const [range1, setRange1] = useState<string>('2');
 
+    const [step0, setStep0] = useState<string>('0');
+    const [step1, setStep1] = useState<string>('1');
+
+    const [arr, setArr] = useState<number[]>([]);
+
     useEffect(() => {
         let newValue = '';
         if (type === SlotType.ALL) {
             newValue = '*';
         } else if (type === SlotType.RANGE) {
             newValue = `${range0}-${range1}`;
+        } else if (type === SlotType.STEP) {
+            newValue = `${step0}/${step1}`;
+        } else if (type === SlotType.ITERATOR) {
+            newValue = arr.length === 0 ? '?' : arr.join(',');
         }
         
         if (newValue !== value) {
             onChange(newValue)
         }
-    }, [type, range0, range1])
+    }, [type, range0, range1, step0, step1, arr])
+
+    function handleChangeArrChecked(s: number) {
+        if (arr.indexOf(s) > -1) {
+            const newArr = arr.filter((i) => i !== s);
+            setArr(newArr)
+        } else {
+            setArr([ ...arr, s ])
+        }
+    }
 
     return (
         <div style={{ display: visible ? 'block' : 'none' }}>
@@ -37,6 +57,29 @@ export default function Second({ visible, value, onChange }: PanelBase) {
                     <div>到</div>
                     <input className='fa-cron-react-editor-input' value={range1} onChange={(e) => setRange1(e.target.value)} />
                 </label>
+            </div>
+
+            <div className='fa-cron-react-editor-panel-item'>
+                <input id='second3' type="radio" checked={type === SlotType.STEP} onChange={(e) => setType(SlotType.STEP)}/>
+                <label htmlFor='second3' className='fa-cron-react-editor-panel-label'>
+                    <div>周期从</div>
+                    <input className='fa-cron-react-editor-input' value={step0} onChange={(e) => setStep0(e.target.value)} />
+                    <div>秒开始，每</div>
+                    <input className='fa-cron-react-editor-input' value={step1} onChange={(e) => setStep1(e.target.value)} />
+                    <div>秒执行一次</div>
+                </label>
+            </div>
+
+            <div className='fa-cron-react-editor-panel-item' style={{ alignItems: 'flex-start' }}>
+                <input id='second4' type="radio" checked={type === SlotType.ITERATOR} onChange={(e) => setType(SlotType.ITERATOR)}/>
+                <div className='fa-cron-react-editor-panel-label' style={{ alignItems: 'flex-start' }}>
+                    <label htmlFor='second4'>指定</label>
+                    <div className='fa-cron-react-editor-panel-checkbox-group'>
+                        {genArray(0, 59).map((i) => (
+                            <Checkbox key={i} label={i < 10 ? `0${i}` : `${i}`} checked={arr.indexOf(i) > -1} onChange={() => handleChangeArrChecked(i)} style={{ width: 60 }} />
+                        ))}
+                    </div>
+                </div>
             </div>
         </div>
     )

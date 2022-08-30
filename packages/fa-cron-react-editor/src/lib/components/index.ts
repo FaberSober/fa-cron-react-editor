@@ -1,4 +1,5 @@
+import Checkbox from "./Checkbox";
 import Label from "./Label";
 import Tabs from "./Tabs";
 
-export { Label, Tabs }
+export { Checkbox, Label, Tabs }
