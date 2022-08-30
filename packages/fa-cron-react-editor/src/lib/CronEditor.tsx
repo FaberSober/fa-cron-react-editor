@@ -5,7 +5,7 @@ import type { CronEditorProps } from './interface'
 
 
 export default function CronEditor({ value, onChange, style }: CronEditorProps) {
-    const [cron, setCron] = useState<string>('* * * * * *');
+    const [cron, setCron] = useState<string>('* * * * * ?');
     const [tab, setTab] = useState<string>('second');
 
     const [second, setSecond] = useState<string>('*');
@@ -18,6 +18,13 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
         const ss = value.split(' ');
         setSecond(ss[0])
     }, [value])
+
+    function handleChangeCron(v:string) {
+        setCron(v);
+        if (onChange) {
+            onChange(v)
+        }
+    }
 
     const ss = cron.split(' ')
     return (
@@ -50,8 +57,11 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                         <Label title='日'   value={ss[3]} />
                         <Label title='月'   value={ss[4]} />
                         <Label title='周'   value={ss[5]} />
-                        <Label title='年'   value={ss.length > 6 ? ss[6] : ''} />
+                        <Label title='年'   value={ss[6]} />
                     </div>
+                </div>
+                <div>
+                    <input value={cron} onChange={e => handleChangeCron(e.target.value)} />
                 </div>
             </div>
         </div>

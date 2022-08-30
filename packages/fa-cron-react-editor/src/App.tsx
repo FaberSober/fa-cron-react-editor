@@ -4,14 +4,18 @@ import './lib/CronEditor.css'
 import './App.css'
 
 function App() {
-    const [cron, setCron] = useState<string>('* * * * * *');
+    const [cron, setCron] = useState<string>('* * * * * ?');
 
     return (
-        <div className='main'>
-            <CronEditor 
-              value={cron}
-              onChange={setCron}
-            />
+        <div>
+            <div className='main'>
+                <CronEditor 
+                    value={cron}
+                    onChange={setCron}
+                />
+            </div>
+
+            <div className='main'>cron: {cron}</div>
         </div>
     );
 }
