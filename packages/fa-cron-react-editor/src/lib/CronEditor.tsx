@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Tabs, Label } from './components'
-import { Second, Minute } from './panel';
+import { Second, Minute, Hour } from './panel';
 import type { CronEditorProps } from './interface'
 
 
@@ -58,6 +58,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
             <div style={{ margin: '12px', height: 300 }}>
                 <Second value={cronArr[0]} onChange={(v) => handleChangeCronArr(0, v)} visible={tab === 'second'} />
                 <Minute value={cronArr[1]} onChange={(v) => handleChangeCronArr(1, v)} visible={tab === 'minute'} />
+                <Hour   value={cronArr[2]} onChange={(v) => handleChangeCronArr(2, v)} visible={tab === 'hour'}   />
             </div>
 
             <div style={{ padding: '12px', borderTop: '1px solid #CCC' }}>
@@ -75,7 +76,9 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                 </div>
                 <div className='fa-cron-react-editor-panel-item'>
                     <div style={{ width: 100 }}>Cron表达式</div>
-                    <input value={cron} onChange={e => handleChangeCron(e.target.value)} style={{ flex: 1 }} />
+                    <div className='fa-cron-react-editor-flex-row-center' style={{ width: 632 }}>
+                      <input value={cron} onChange={e => handleChangeCron(e.target.value)} style={{ flex: 1 }} />
+                    </div>
                 </div>
                 <div>
                     <div style={{ marginRight: 12 }}>最近5次运行时间</div>

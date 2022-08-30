@@ -1,4 +1,6 @@
-import Minute from "./Minute";
 import Second from "./Second";
+import Minute from "./Minute";
+import Hour from "./Hour";
 
-export { Minute, Second }
+
+export { Second, Minute, Hour }

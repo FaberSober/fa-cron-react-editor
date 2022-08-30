@@ -5,7 +5,7 @@ import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
 
-export default function Second({ visible, value, onChange }: PanelBase) {
+export default function Hour({ visible, value, onChange }: PanelBase) {
     const [type, setType] = useState<SlotType>(SlotType.ALL);
 
     const [range0, setRange0] = useState<string>('1');
@@ -45,38 +45,38 @@ export default function Second({ visible, value, onChange }: PanelBase) {
     return (
         <div style={{ display: visible ? 'block' : 'none' }}>
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='second1' type="radio" checked={type === SlotType.ALL} onChange={(e) => setType(SlotType.ALL)}/>
-                <label htmlFor='second1' className='fa-cron-react-editor-panel-label'>每秒 允许的通配符[, - * /]</label>
+                <input id='hour1' type="radio" checked={type === SlotType.ALL} onChange={(e) => setType(SlotType.ALL)}/>
+                <label htmlFor='hour1' className='fa-cron-react-editor-panel-label'>每小时 允许的通配符[, - * /]</label>
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='second2' type="radio" checked={type === SlotType.RANGE} onChange={(e) => setType(SlotType.RANGE)}/>
-                <label htmlFor='second2' className='fa-cron-react-editor-panel-label'>
+                <input id='hour2' type="radio" checked={type === SlotType.RANGE} onChange={(e) => setType(SlotType.RANGE)}/>
+                <label htmlFor='hour2' className='fa-cron-react-editor-panel-label'>
                     <div>周期从</div>
                     <input className='fa-cron-react-editor-input' value={range0} onChange={(e) => setRange0(e.target.value)} />
                     <div>到</div>
                     <input className='fa-cron-react-editor-input' value={range1} onChange={(e) => setRange1(e.target.value)} />
-                    <div>秒</div>
+                    <div>小时</div>
                 </label>
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='second3' type="radio" checked={type === SlotType.STEP} onChange={(e) => setType(SlotType.STEP)}/>
-                <label htmlFor='second3' className='fa-cron-react-editor-panel-label'>
+                <input id='hour3' type="radio" checked={type === SlotType.STEP} onChange={(e) => setType(SlotType.STEP)}/>
+                <label htmlFor='hour3' className='fa-cron-react-editor-panel-label'>
                     <div>周期从</div>
                     <input className='fa-cron-react-editor-input' value={step0} onChange={(e) => setStep0(e.target.value)} />
-                    <div>秒开始，每</div>
+                    <div>小时开始，每</div>
                     <input className='fa-cron-react-editor-input' value={step1} onChange={(e) => setStep1(e.target.value)} />
-                    <div>秒执行一次</div>
+                    <div>小时执行一次</div>
                 </label>
             </div>
 
             <div className='fa-cron-react-editor-panel-item' style={{ alignItems: 'flex-start' }}>
-                <input id='second4' type="radio" checked={type === SlotType.ITERATOR} onChange={(e) => setType(SlotType.ITERATOR)}/>
+                <input id='hour4' type="radio" checked={type === SlotType.ITERATOR} onChange={(e) => setType(SlotType.ITERATOR)}/>
                 <div className='fa-cron-react-editor-panel-label' style={{ alignItems: 'flex-start' }}>
-                    <label htmlFor='second4'>指定</label>
-                    <div className='fa-cron-react-editor-panel-checkbox-group'>
-                        {genArray(0, 59).map((i) => (
+                    <label htmlFor='hour4'>指定</label>
+                    <div className='fa-cron-react-editor-panel-checkbox-group' style={{ width: 720 }}>
+                        {genArray(0, 23).map((i) => (
                             <Checkbox key={i} label={i < 10 ? `0${i}` : `${i}`} checked={arr.indexOf(i) > -1} onChange={() => handleChangeArrChecked(i)} style={{ width: 60 }} />
                         ))}
                     </div>
