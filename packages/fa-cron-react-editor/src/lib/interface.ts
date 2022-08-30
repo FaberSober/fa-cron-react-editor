@@ -16,3 +16,15 @@ export interface TabsProps {
     activeKey: string;
     onChange: (v:string) => void;
 }
+
+export enum SlotType {
+    ALL = 'all', // *
+    RANGE = 'range', // 1-2
+    STEP = 'step', // 0/5
+    ITERATOR = 'iterator', // 1,2,3
+}
+
+export interface SlotBase {
+    value: string;
+    onChange: (v:string) => void;
+}

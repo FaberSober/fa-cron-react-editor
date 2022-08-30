@@ -1,11 +1,23 @@
-import React, { useState } from 'react'
-import Tabs from './tab/Tabs'
+import React, { useEffect, useState } from 'react'
+import Tabs from './components/Tabs'
+import Second from './panel/Second';
 import type { CronEditorProps } from './interface'
 
 
 export default function CronEditor({ value, onChange, style }: CronEditorProps) {
-    const [cron, setCron] = useState<string>(value || '* * * * * *');
+    const [cron, setCron] = useState<string>('* * * * * *');
     const [tab, setTab] = useState<string>('second');
+
+    const [second, setSecond] = useState<string>('*');
+
+    useEffect(() => {
+        if (value === undefined) return;
+
+        setCron(value)
+
+        const ss = value.split(' ');
+        setSecond(ss[0])
+    }, [value])
 
     return (
         <div className='fa-cron-react-editor-main' style={style}>
@@ -22,6 +34,8 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                 activeKey={tab}
                 onChange={(v) => { console.log('v',v); setTab(v) }}
             />
+
+            <Second value={second} onChange={setSecond} />
         </div>
     )
 };

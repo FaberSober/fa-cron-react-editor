@@ -13,7 +13,6 @@
 
 .fa-cron-react-editor-tab-item,
 .fa-cron-react-editor-tab-item-active {
-    padding: 6px;
     cursor: pointer;
     transition: all ease-in-out 0.3s;
     background-color: #EEE;
@@ -30,3 +29,15 @@
 
 
 /* ------------------------------------------- tab ------------------------------------------- */
+
+
+/* ------------------------------------------- panel ------------------------------------------- */
+
+.fa-cron-react-editor-flex-row-center {
+    display: flex;
+    align-items: center;
+}
+
+.fa-cron-react-editor-input {
+    width: 50px;
+}
