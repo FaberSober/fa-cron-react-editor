@@ -1,14 +1,15 @@
 import { ComponentMeta, ComponentStoryObj } from '@storybook/react';
-import MyButton from './MyButton';
+import CronEditor from './CronEditor';
 
-const meta: ComponentMeta<typeof MyButton> = {
-    title: 'Design System/MyButton',
-    component: MyButton,
+const meta: ComponentMeta<typeof CronEditor> = {
+    title: 'Design System/CronEditor',
+    component: CronEditor,
 };
 export default meta;
 
-export const Primary: ComponentStoryObj<typeof MyButton> = {
+export const Primary: ComponentStoryObj<typeof CronEditor> = {
     args: {
-        children: 'Hello',
+        // specify React component props here
+        // children: 'Hello',
     },
 };

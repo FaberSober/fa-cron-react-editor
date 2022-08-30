@@ -1,18 +1,14 @@
-import styled from 'styled-components';
-import MyButton from './lib/MyButton';
+import React from 'react'
+import CronEditor from './lib/CronEditor';
+import './App.css'
 
 function App() {
     return (
-        <Wrapper>
-            <MyButton>Click me</MyButton>
-        </Wrapper>
+        <div className='main'>
+            <CronEditor />
+        </div>
     );
 }
 
-const Wrapper = styled.div`
-    margin: 2rem;
-    display: flex;
-    justify-content: center;
-`;
 
 export default App;
