@@ -6,6 +6,14 @@
     width: 800px;
 }
 
+.fa-cron-react-editor-main input[type="radio" i] {
+    margin: 4px;
+}
+
+.fa-cron-react-editor-main input[type="checkbox" i] {
+    margin: 4px;
+}
+
 
 /* ------------------------------------------- tab ------------------------------------------- */
 

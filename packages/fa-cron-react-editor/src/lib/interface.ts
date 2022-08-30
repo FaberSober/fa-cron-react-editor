@@ -19,9 +19,12 @@ export interface TabsProps {
 
 export enum SlotType {
     ALL = 'all', // *
+    NO_SPEC = 'no_spec', // ? 不指定
     RANGE = 'range', // 1-2
     STEP = 'step', // 0/5
     ITERATOR = 'iterator', // 1,2,3
+    DAY_W = 'day_w', // 1W
+    DAY_L = 'day_l', // L
 }
 
 export interface PanelBase {
