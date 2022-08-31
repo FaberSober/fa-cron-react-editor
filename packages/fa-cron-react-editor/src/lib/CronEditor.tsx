@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Tabs, Label } from './components'
 import { Second, Minute, Hour, Day, Month, Week, Year } from './panel';
 import type { CronEditorProps } from './interface'
+import './CronEditor.css'
 
 
 const DEFAULT_CRON = '* * * * * ?';
