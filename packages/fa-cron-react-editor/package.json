@@ -1,6 +1,14 @@
 {
     "name": "fa-cron-react-editor",
     "version": "0.0.1",
+    "homepage": "https://github.com/FaberSober/fa-cron-react-editor#readme",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/FaberSober/fa-cron-react-editor.git"
+    },
+    "bugs": {
+        "url": "https://github.com/FaberSober/fa-cron-react-editor/issues"
+    },
     "scripts": {
         "dev": "vite",
         "build": "tsc && vite build",
