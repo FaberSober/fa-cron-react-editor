@@ -5,6 +5,7 @@ import { SlotType } from '../interface'
 
 
 export default function Year({ visible, value, onChange }: PanelBase) {
+    const [innerValue, setInnerValue] = useState<string>(value);
     const [type, setType] = useState<SlotType>(SlotType.ALL);
 
     const [range0, setRange0] = useState<string>('2022');
@@ -21,9 +22,30 @@ export default function Year({ visible, value, onChange }: PanelBase) {
         }
         
         if (newValue !== value) {
+            setInnerValue(newValue)
             onChange(newValue)
         }
     }, [type, range0, range1])
+
+    useEffect(() => {
+        if (value === undefined || value === '') {
+            setType(SlotType.NO_SPEC)
+            return;
+        }
+        if (value === innerValue) return;
+
+        setInnerValue(value);
+        if (value === '*') {
+            setType(SlotType.ALL)
+        } else if (value === '') {
+            setType(SlotType.NO_SPEC)
+        } else if (value.indexOf('-') > -1) {
+            setType(SlotType.RANGE)
+            const ss = value.split('-')
+            setRange0(ss[0])
+            setRange1(ss[1])
+        }
+    }, [value])
 
     return (
         <div style={{ display: visible ? 'block' : 'none' }}>
