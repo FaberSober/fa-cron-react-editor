@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Checkbox } from '../components'
+import { Checkbox, Radio } from '../components'
 import { genArray } from '../utils/utils'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
@@ -29,23 +29,20 @@ export default function Year({ visible, value, onChange }: PanelBase) {
     return (
         <div style={{ display: visible ? 'block' : 'none' }}>
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='year1' type="radio" checked={type === SlotType.NO_SPEC} onChange={(e) => setType(SlotType.NO_SPEC)}/>
-                <label htmlFor='year1' className='fa-cron-react-editor-panel-label'>不指定 允许的通配符[, - * /]</label>
+                <Radio label='不指定 允许的通配符[, - * /]' checked={type === SlotType.NO_SPEC} onChange={(e) => setType(SlotType.NO_SPEC)} />
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='yearNoSpec' type="radio" checked={type === SlotType.ALL} onChange={(e) => setType(SlotType.ALL)}/>
-                <label htmlFor='yearNoSpec' className='fa-cron-react-editor-panel-label'>每年</label>
+                <Radio label='每年' checked={type === SlotType.ALL} onChange={(e) => setType(SlotType.ALL)} />
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='year2' type="radio" checked={type === SlotType.RANGE} onChange={(e) => setType(SlotType.RANGE)}/>
-                <label htmlFor='year2' className='fa-cron-react-editor-panel-label'>
-                    <div>周期从</div>
+                <Radio label='周期从' checked={type === SlotType.RANGE} onChange={(e) => setType(SlotType.RANGE)} />
+                <div className='fa-cron-react-editor-panel-label'>
                     <input className='fa-cron-react-editor-input' value={range0} onChange={(e) => setRange0(e.target.value)} />
                     <div>到</div>
                     <input className='fa-cron-react-editor-input' value={range1} onChange={(e) => setRange1(e.target.value)} />
-                </label>
+                </div>
             </div>
         </div>
     )

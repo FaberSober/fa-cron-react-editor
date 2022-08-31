@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Checkbox } from '../components'
+import { Checkbox, Radio } from '../components'
 import { genArray } from '../utils/utils'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
@@ -61,47 +61,41 @@ export default function Week({ visible, value, onChange }: PanelBase) {
     return (
         <div style={{ display: visible ? 'block' : 'none' }}>
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='week1' type="radio" checked={type === SlotType.ALL} onChange={(e) => setType(SlotType.ALL)}/>
-                <label htmlFor='week1' className='fa-cron-react-editor-panel-label'>每周 允许的通配符[, - * /]</label>
+                <Radio label='每周 允许的通配符[, - * /]' checked={type === SlotType.ALL} onChange={(e) => setType(SlotType.ALL)} />
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='weekNoSpec' type="radio" checked={type === SlotType.NO_SPEC} onChange={(e) => setType(SlotType.NO_SPEC)}/>
-                <label htmlFor='weekNoSpec' className='fa-cron-react-editor-panel-label'>不指定</label>
+                <Radio label='不指定' checked={type === SlotType.NO_SPEC} onChange={(e) => setType(SlotType.NO_SPEC)} />
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='week2' type="radio" checked={type === SlotType.RANGE} onChange={(e) => setType(SlotType.RANGE)}/>
-                <label htmlFor='week2' className='fa-cron-react-editor-panel-label'>
-                    <div>周期从星期</div>
+                <Radio label='周期从星期' checked={type === SlotType.RANGE} onChange={(e) => setType(SlotType.RANGE)} />
+                <div className='fa-cron-react-editor-panel-label'>
                     <input className='fa-cron-react-editor-input' value={range0} onChange={(e) => setRange0(e.target.value)} />
                     <div>到星期</div>
                     <input className='fa-cron-react-editor-input' value={range1} onChange={(e) => setRange1(e.target.value)} />
-                </label>
+                </div>
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='week3' type="radio" checked={type === SlotType.STEP} onChange={(e) => setType(SlotType.STEP)}/>
-                <label htmlFor='week3' className='fa-cron-react-editor-panel-label'>
-                    <div>第</div>
+                <Radio label='第' checked={type === SlotType.STEP} onChange={(e) => setType(SlotType.STEP)} />
+                <div className='fa-cron-react-editor-panel-label'>
                     <input className='fa-cron-react-editor-input' value={step0} onChange={(e) => setStep0(e.target.value)} />
                     <div>周的星期</div>
                     <input className='fa-cron-react-editor-input' value={step1} onChange={(e) => setStep1(e.target.value)} />
-                </label>
+                </div>
             </div>
 
             <div className='fa-cron-react-editor-panel-item'>
-                <input id='week3' type="radio" checked={type === SlotType.WEEK_L} onChange={(e) => setType(SlotType.WEEK_L)}/>
-                <label htmlFor='week3' className='fa-cron-react-editor-panel-label'>
-                    <div>本月最后一个星期</div>
+                <Radio label='本月最后一个星期' checked={type === SlotType.WEEK_L} onChange={(e) => setType(SlotType.WEEK_L)} />
+                <div className='fa-cron-react-editor-panel-label'>
                     <input className='fa-cron-react-editor-input' value={weekL} onChange={(e) => setWeekL(e.target.value)} />
-                </label>
+                </div>
             </div>
             
             <div className='fa-cron-react-editor-panel-item' style={{ alignItems: 'flex-start' }}>
-                <input id='week4' type="radio" checked={type === SlotType.ITERATOR} onChange={(e) => setType(SlotType.ITERATOR)}/>
+                <Radio label='指定' checked={type === SlotType.ITERATOR} onChange={(e) => setType(SlotType.ITERATOR)} />
                 <div className='fa-cron-react-editor-panel-label' style={{ alignItems: 'flex-start' }}>
-                    <label htmlFor='week4'>指定</label>
                     <div className='fa-cron-react-editor-panel-checkbox-group' style={{ width: 420 }}>
                         {[2,3,4,5,6,7,1].map((i) => (
                             <Checkbox key={i} label={WEEK_MAP[i]} checked={arr.indexOf(i) > -1} onChange={() => handleChangeArrChecked(i)} style={{ width: 60 }} />

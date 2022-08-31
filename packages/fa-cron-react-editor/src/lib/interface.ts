@@ -46,3 +46,10 @@ export interface CheckboxProps {
     onChange: (v: boolean) => void;
     style?: CSSProperties;
 }
+
+export interface RadioProps {
+    label: string;
+    checked: boolean;
+    onChange: (v: boolean) => void;
+    style?: CSSProperties;
+}
