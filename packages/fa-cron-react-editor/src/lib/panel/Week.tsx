@@ -16,6 +16,7 @@ const WEEK_MAP:{[key:number]:string} = {
 }
 
 export default function Week({ visible, value, onChange }: PanelBase) {
+    const [innerValue, setInnerValue] = useState<string>(value);
     const [type, setType] = useState<SlotType>(SlotType.ALL);
 
     const [range0, setRange0] = useState<string>('1');
@@ -45,9 +46,40 @@ export default function Week({ visible, value, onChange }: PanelBase) {
         }
         
         if (newValue !== value) {
+            setInnerValue(newValue)
             onChange(newValue)
         }
     }, [type, range0, range1, step0, step1, arr, weekL])
+
+    useEffect(() => {
+        if (value === undefined || value === '') return;
+        if (value === innerValue) return;
+
+        setInnerValue(value);
+        if (value === '*') {
+            setType(SlotType.ALL)
+        } else if (value === '?') {
+            setType(SlotType.NO_SPEC)
+        } else if (value.indexOf('/') > -1) {
+            setType(SlotType.RANGE)
+            const ss = value.split('/')
+            setRange0(ss[0])
+            setRange1(ss[1])
+        } else if (value.indexOf('#') > -1) {
+            setType(SlotType.STEP)
+            const ss = value.split('#')
+            setStep0(ss[0])
+            setStep1(ss[1])
+        } else if (value.indexOf('L') > -1) {
+            setType(SlotType.WEEK_L)
+            setWeekL(value.replaceAll('L', ''))
+        } else {
+            setType(SlotType.ITERATOR)
+            const ss = value.split(',')
+            const newArr:number[] = ss.filter(i => (new Number(1) instanceof Number)).map(i => parseInt(i))
+            setArr(newArr)
+        }
+    }, [value])
 
     function handleChangeArrChecked(s: number) {
         let newArr = [ ...arr, s ];
