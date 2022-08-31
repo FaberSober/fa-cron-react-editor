@@ -25,6 +25,7 @@ export enum SlotType {
     ITERATOR = 'iterator', // 1,2,3
     DAY_W = 'day_w', // 1W
     DAY_L = 'day_l', // L
+    WEEK_L = 'week_l', // L
 }
 
 export interface PanelBase {
