@@ -82,7 +82,6 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                     <div style={{ width: 100 }}>Cron表达式</div>
                     <div className='fa-cron-react-editor-flex-row-center' style={{ width: 632 }}>
                       <input value={cron} onChange={e => handleChangeCron(e.target.value)} style={{ flex: 1 }} />
-                      <button style={{ marginLeft: 8 }}>反解析到UI</button>
                     </div>
                 </div>
             </div>
