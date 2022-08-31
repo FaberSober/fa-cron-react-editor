@@ -65,5 +65,6 @@ cd packages/my-lib && yarn storybook
 ```
 
 ## RoadMap
-1. [ ] Cron Base Editor
-2. [ ] Locale customization
+1. [x] Cron Base Editor
+2. [ ] Better style
+3. [ ] Locale customization
