@@ -1,6 +1,6 @@
 {
     "name": "fa-cron-react-editor",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "homepage": "https://github.com/FaberSober/fa-cron-react-editor#readme",
     "repository": {
         "type": "git",
@@ -56,10 +56,7 @@
     "module": "./dist/fa-cron-react-editor.es.js",
     "types": "./dist/index.d.ts",
     "exports": {
-        ".": {
-            "import": "./dist/fa-cron-react-editor.es.js",
-            "require": "./dist/fa-cron-react-editor.umd.js"
-        },
+        ".": "./dist/fa-cron-react-editor.es.js",
         "./dist/index.css": "./dist/index.css"
     }
 }
