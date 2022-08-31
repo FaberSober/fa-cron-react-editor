@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Tabs, Label } from './components'
-import { Second, Minute, Hour, Day, Month, Week } from './panel';
+import { Second, Minute, Hour, Day, Month, Week, Year } from './panel';
 import type { CronEditorProps } from './interface'
 
 
@@ -61,7 +61,8 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                 <Hour   value={cronArr[2]} onChange={(v) => handleChangeCronArr(2, v)} visible={tab === 'hour'  } />
                 <Day    value={cronArr[3]} onChange={(v) => handleChangeCronArr(3, v)} visible={tab === 'day'   } />
                 <Month  value={cronArr[4]} onChange={(v) => handleChangeCronArr(4, v)} visible={tab === 'month' } />
-                <Week   value={cronArr[5]} onChange={(v) => handleChangeCronArr(5, v)} visible={tab === 'week' } />
+                <Week   value={cronArr[5]} onChange={(v) => handleChangeCronArr(5, v)} visible={tab === 'week'  } />
+                <Year   value={cronArr[6]} onChange={(v) => handleChangeCronArr(6, v)} visible={tab === 'year'  } />
             </div>
 
             <div style={{ padding: '12px', borderTop: '1px solid #CCC' }}>
