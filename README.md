@@ -3,6 +3,8 @@
 
 [![npm package](https://img.shields.io/npm/v/fa-cron-react-editor/latest.svg)](https://www.npmjs.com/package/fa-cron-react-editor)
 
+use online: [http://cron.dward.cn/](http://cron.dward.cn/)
+
 view demo: [https://codesandbox.io/s/fa-cron-react-editor-demo01-pm9iio](https://codesandbox.io/s/fa-cron-react-editor-demo01-pm9iio)
 
 # Install
