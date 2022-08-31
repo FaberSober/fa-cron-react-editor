@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Checkbox, Radio } from '../components'
-import { genArray } from '../utils/utils'
+import { Radio } from '../components'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
