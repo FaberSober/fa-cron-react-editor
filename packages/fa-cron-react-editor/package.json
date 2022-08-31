@@ -1,6 +1,6 @@
 {
     "name": "fa-cron-react-editor",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "homepage": "https://github.com/FaberSober/fa-cron-react-editor#readme",
     "repository": {
         "type": "git",
@@ -13,7 +13,7 @@
         "dev": "vite",
         "build": "tsc && vite build",
         "preview": "vite preview",
-        "prepack": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
+        "prepackOld": "json -f package.json -I -e \"delete this.devDependencies; delete this.dependencies\"",
         "storybook": "start-storybook -p 6006",
         "build-storybook": "build-storybook"
     },
