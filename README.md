@@ -49,7 +49,7 @@ yarn install
 Build the library:
 
 ```bash
-cd packages/my-lib && yarn build
+cd packages/fa-cron-react-editor && yarn build
 ```
 
 Run the development server of the test project:
@@ -63,7 +63,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 If you want to start the storybook server, run:
 
 ```bash
-cd packages/my-lib && yarn storybook
+cd packages/fa-cron-react-editor && yarn storybook
 ```
 
 ## RoadMap
