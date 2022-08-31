@@ -46,7 +46,7 @@ export default function Day({ visible, value, onChange }: PanelBase) {
         if (arr.indexOf(s) > -1) {
             newArr = arr.filter((i) => i !== s);
         }
-        newArr.sort();
+        newArr.sort((a,b) => a-b);
         setArr(newArr);
     }
 
