@@ -53,7 +53,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                     { key: 'year', label: '年' },
                 ]}
                 activeKey={tab}
-                onChange={(v) => { console.log('v',v); setTab(v) }}
+                onChange={setTab}
             />
 
             <div style={{ margin: '12px', height: 300 }}>
