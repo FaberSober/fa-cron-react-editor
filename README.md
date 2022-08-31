@@ -38,6 +38,8 @@ function App() {
 
 ## Getting Started
 
+Build this library using: [react-library-vite-example](https://github.com/nicolaserny/react-library-vite-example)
+
 First, install the dependencies of the monorepo:
 
 ```bash
@@ -65,6 +67,6 @@ cd packages/my-lib && yarn storybook
 ```
 
 ## RoadMap
-1. [x] Cron Base Editor
+1. [x] Base cron editor
 2. [ ] Better style
 3. [ ] Locale customization
