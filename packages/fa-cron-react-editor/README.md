@@ -4,7 +4,7 @@
 [![npm package](https://img.shields.io/npm/v/fa-cron-react-editor/latest.svg)](https://www.npmjs.com/package/fa-cron-react-editor)
 
 # Install
-```
+```base
 # NPM
 npm install fa-cron-react-editor
 
@@ -13,7 +13,7 @@ yarn add fa-cron-react-editor
 ```
 
 # Usage
-```
+```react
 import { CronEditor } from 'fa-cron-react-editor';
 
 import 'fa-cron-react-editor/dist/index.css'
@@ -31,6 +31,6 @@ function App() {
 ```
 
 # Demo
-![fa-cron-react-editor example](./doc/demo1.png)
+![fa-cron-react-editor example](/doc/demo1.png)
 
 

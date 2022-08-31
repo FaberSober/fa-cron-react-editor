@@ -1,6 +1,40 @@
-# Create a React Library with TypeScript and Vite
+# fa-cron-react-editor
+> A React cron editor
 
-This repository is an example of a React library created with TypeScript and Vite.
+[![npm package](https://img.shields.io/npm/v/fa-cron-react-editor/latest.svg)](https://www.npmjs.com/package/fa-cron-react-editor)
+
+# Install
+```base
+# NPM
+npm install fa-cron-react-editor
+
+# Yarn
+yarn add fa-cron-react-editor
+```
+
+# Usage
+```react
+import { CronEditor } from 'fa-cron-react-editor';
+
+import 'fa-cron-react-editor/dist/index.css'
+
+function App() {
+    const [cron, setCron] = useState<string>('* * * * * ?');
+
+    return (
+        <CronEditor 
+            value={cron}
+            onChange={setCron}
+        />
+    );
+}
+```
+
+# Demo
+![fa-cron-react-editor example](/doc/demo1.png)
+
+
+
 
 ## Getting Started
 
