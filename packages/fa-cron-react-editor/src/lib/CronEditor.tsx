@@ -56,7 +56,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
                 onChange={setTab}
             />
 
-            <div style={{ margin: '12px', height: 300 }}>
+            <div className='fa-cron-react-editor-content'>
                 <Second value={cronArr[0]} onChange={(v) => handleChangeCronArr(0, v)} visible={tab === 'second'} />
                 <Minute value={cronArr[1]} onChange={(v) => handleChangeCronArr(1, v)} visible={tab === 'minute'} />
                 <Hour   value={cronArr[2]} onChange={(v) => handleChangeCronArr(2, v)} visible={tab === 'hour'  } />

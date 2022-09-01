@@ -3,7 +3,7 @@
 .fa-cron-react-editor-main {
     border: 1px solid #ccc;
     font: 14px Helvetica Neue, Helvetica, PingFang SC, Tahoma, Arial, sans-serif;
-    width: 800px;
+    width: 820px;
 }
 
 .fa-cron-react-editor-main input[type="radio" i] {
@@ -14,6 +14,24 @@
     margin: 4px;
 }
 
+.fa-cron-react-editor-main input {
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    background-color: #fff;
+    border-radius: 2px;
+    padding-left: 10px;
+    border: 1px solid #e6e6e6;
+}
+
+.fa-cron-react-editor-content {
+    margin: 12px; 
+    height: 340px;
+}
+
+.fa-cron-react-editor-content input {
+    margin: 0 6px;
+}
 
 /* ------------------------------------------- tab ------------------------------------------- */
 
@@ -136,4 +154,43 @@
 .fa-cron-react-editor-checkbox-icon-ok::before {
     content: url(./assets/icon_check.svg);
     margin: 1px;
+}
+
+/* ------------------------------------------- radio ------------------------------------------- */
+.fa-cron-react-editor-radio {
+    cursor: pointer;
+    margin: 4px;
+    display: flex;
+    align-items: center;
+}
+
+.fa-cron-react-editor-radio-round, .fa-cron-react-editor-radio-round-checked {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #999;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+    margin-right: 6px;
+}
+
+.fa-cron-react-editor-radio-round-checked {
+    border: 1px solid #43a6fe;
+}
+
+.fa-cron-react-editor-radio-point, .fa-cron-react-editor-radio-point-checked {
+    width: 0;
+    height: 0;
+    background-color: #43a6fe;
+    border-radius: 4px;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+}
+
+.fa-cron-react-editor-radio-point-checked {
+    width: 8px;
+    height: 8px;
 }
