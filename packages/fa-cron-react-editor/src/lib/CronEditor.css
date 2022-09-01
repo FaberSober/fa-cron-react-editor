@@ -96,3 +96,43 @@
     flex-wrap: wrap;
     width: 600px;
 }
+
+/* ------------------------------------------- checkbox ------------------------------------------- */
+.fa-cron-react-editor-checkbox {
+    cursor: pointer;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.fa-cron-react-editor-checkbox i {
+    right: auto;
+    left: 0;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    font-size: 12px;
+    border-radius: 2px;
+    -webkit-transition: .1s linear;
+    transition: .1s linear;
+    margin-right: 6px;
+}
+
+.fa-cron-react-editor-checkbox:hover i {
+    border: 1px solid #43a6fe;
+}
+
+.fa-cron-react-editor-checkbox-icon-not {
+    border: 1px solid #d2d2d2;
+    background-color: #fff;
+}
+
+.fa-cron-react-editor-checkbox-icon-ok {
+    border: 1px solid #43a6fe;
+    background-color: #43a6fe;
+    color: #FFF;
+}
+
+.fa-cron-react-editor-checkbox-icon-ok::before {
+    content: "v";
+}
