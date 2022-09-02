@@ -17,7 +17,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
     }, [value])
 
     useEffect(() => {
-        const newCron = cronArr.join(' ')
+        const newCron = cronArr.join(' ').trim()
         if (onChange && newCron !== value) {
             onChange(newCron)
         }
@@ -30,7 +30,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
     }
 
     function handleChangeCron(v:string) {
-        const newArr = v.split(' ')
+        const newArr = v.trim().split(' ')
         if (newArr.length < 6) {
             for (let i = newArr.length; i < 6; i+=1) {
                 newArr.push(i === 5 ? '?' : '*')
@@ -39,7 +39,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
         setCronArr(newArr);
     }
 
-    const cron = cronArr.join(' ')
+    const cron = cronArr.join(' ').trim()
     return (
         <div className='fa-cron-react-editor-main' style={style}>
             <Tabs
