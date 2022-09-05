@@ -5,25 +5,25 @@ import { SlotType } from '../interface'
 
 
 export default function Year({ visible, value, onChange }: PanelBase) {
-    const [innerValue, setInnerValue] = useState<string>(value);
-    const [type, setType] = useState<SlotType>(SlotType.ALL);
+    const [innerValue, setInnerValue] = useState<string|undefined>(value);
+    const [type, setType] = useState<SlotType>(SlotType.NO_SPEC);
 
     const [range0, setRange0] = useState<string>('2022');
     const [range1, setRange1] = useState<string>('2023');
 
     useEffect(() => {
-        let newValue = '';
+        let newValue = undefined;
         if (type === SlotType.ALL) {
             newValue = '*';
         } else if (type === SlotType.NO_SPEC) {
-            newValue = '';
+            newValue = undefined;
         } else if (type === SlotType.RANGE) {
             newValue = `${range0}-${range1}`;
         }
         
         if (newValue !== value) {
             setInnerValue(newValue)
-            onChange(newValue)
+            onChange(newValue || '')
         }
     }, [type, range0, range1])
 

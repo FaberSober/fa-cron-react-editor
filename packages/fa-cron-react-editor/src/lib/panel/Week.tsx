@@ -17,7 +17,7 @@ const WEEK_MAP:{[key:number]:string} = {
 
 export default function Week({ visible, value, onChange }: PanelBase) {
     const [innerValue, setInnerValue] = useState<string>(value);
-    const [type, setType] = useState<SlotType>(SlotType.ALL);
+    const [type, setType] = useState<SlotType>(SlotType.NO_SPEC);
 
     const [range0, setRange0] = useState<string>('1');
     const [range1, setRange1] = useState<string>('2');
