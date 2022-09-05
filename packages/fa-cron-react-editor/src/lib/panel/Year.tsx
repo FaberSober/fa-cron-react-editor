@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Radio } from '../components'
+import { getSlotTypeYear } from '../utils/utils'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
 
 export default function Year({ visible, value, onChange }: PanelBase) {
     const [innerValue, setInnerValue] = useState<string|undefined>(value);
-    const [type, setType] = useState<SlotType>(SlotType.NO_SPEC);
+    const [type, setType] = useState<SlotType>(getSlotTypeYear(value));
 
     const [range0, setRange0] = useState<string>('2022');
     const [range1, setRange1] = useState<string>('2023');

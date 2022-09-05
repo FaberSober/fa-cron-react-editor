@@ -8,7 +8,11 @@ import './CronEditor.css'
 const DEFAULT_CRON = '* * * * * ?';
 
 export default function CronEditor({ value, onChange, style }: CronEditorProps) {
-    const [cronArr, setCronArr] = useState<string[]>(DEFAULT_CRON.split(' '));
+    const [cronArr, setCronArr] = useState<string[]>(() => {
+        console.log('cronArr', value)
+        if (value === undefined || value.trim() === '') return DEFAULT_CRON.split(' ');
+        return value.trim().split(' ');
+    });
     const [tab, setTab] = useState<string>('second');
 
     useEffect(() => {
@@ -26,10 +30,12 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
     }, [cronArr])
 
     function handleChangeCronArr(index: number, newValue: string) {
-        // console.log('handleChangeCronArr', index, newValue)
+        console.log('handleChangeCronArr', index, newValue)
         const newArr = [ ...cronArr ];
         newArr[index] = newValue;
-        setCronArr(newArr)
+        if (newArr.toString() !== cronArr.toString()) {
+            setCronArr(newArr);
+        }
     }
 
     function handleChangeCron(v:string) {

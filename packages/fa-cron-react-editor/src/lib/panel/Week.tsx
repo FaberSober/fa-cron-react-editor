@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Checkbox, Radio } from '../components'
-import { genArray } from '../utils/utils'
+import { genArray, getSlotTypeWeek } from '../utils/utils'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
@@ -17,7 +17,7 @@ const WEEK_MAP:{[key:number]:string} = {
 
 export default function Week({ visible, value, onChange }: PanelBase) {
     const [innerValue, setInnerValue] = useState<string>(value);
-    const [type, setType] = useState<SlotType>(SlotType.NO_SPEC);
+    const [type, setType] = useState<SlotType>(getSlotTypeWeek(value));
 
     const [range0, setRange0] = useState<string>('1');
     const [range1, setRange1] = useState<string>('2');

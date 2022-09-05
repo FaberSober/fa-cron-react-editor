@@ -1,21 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import { Checkbox, Radio } from '../components'
-import { genArray } from '../utils/utils'
+import { genArray, getSlotType, splitToNumbers } from '../utils/utils'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
 
 export default function Second({ visible, value, onChange }: PanelBase) {
     const [innerValue, setInnerValue] = useState<string>(value);
-    const [type, setType] = useState<SlotType>(SlotType.ALL);
+    const [type, setType] = useState<SlotType>(getSlotType(value));
 
-    const [range0, setRange0] = useState<string>('1');
-    const [range1, setRange1] = useState<string>('2');
+    const [range0, setRange0] = useState<string>(type === SlotType.RANGE ? value.split('-')[0] : '1');
+    const [range1, setRange1] = useState<string>(type === SlotType.RANGE ? value.split('-')[1] :'2');
 
-    const [step0, setStep0] = useState<string>('0');
-    const [step1, setStep1] = useState<string>('1');
+    const [step0, setStep0] = useState<string>(type === SlotType.STEP ? value.split('/')[0] : '0');
+    const [step1, setStep1] = useState<string>(type === SlotType.STEP ? value.split('/')[1] : '1');
 
-    const [arr, setArr] = useState<number[]>([0]);
+    const [arr, setArr] = useState<number[]>(type === SlotType.ITERATOR ? splitToNumbers(value) : [0]);
 
     useEffect(() => {
         let newValue = '';
@@ -54,8 +54,7 @@ export default function Second({ visible, value, onChange }: PanelBase) {
             setStep1(ss[1])
         } else {
             setType(SlotType.ITERATOR)
-            const ss = value.split(',')
-            const newArr:number[] = ss.filter(i => (new Number(1) instanceof Number)).map(i => parseInt(i))
+            const newArr:number[] = splitToNumbers(value)
             setArr(newArr)
         }
     }, [value])

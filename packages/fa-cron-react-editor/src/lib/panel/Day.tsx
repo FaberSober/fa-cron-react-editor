@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { Checkbox, Radio } from '../components'
-import { genArray } from '../utils/utils'
+import { genArray, getSlotTypeDay } from '../utils/utils'
 import type { PanelBase } from '../interface'
 import { SlotType } from '../interface'
 
 
 export default function Day({ visible, value, onChange }: PanelBase) {
     const [innerValue, setInnerValue] = useState<string>(value);
-    const [type, setType] = useState<SlotType>(SlotType.ALL);
+    const [type, setType] = useState<SlotType>(getSlotTypeDay(value));
 
     const [range0, setRange0] = useState<string>('1');
     const [range1, setRange1] = useState<string>('2');
