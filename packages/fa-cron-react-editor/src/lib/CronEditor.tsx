@@ -8,24 +8,25 @@ import './CronEditor.css'
 const DEFAULT_CRON = '* * * * * ?';
 
 export default function CronEditor({ value, onChange, style }: CronEditorProps) {
-    const [cronArr, setCronArr] = useState<string[]>(() => {
-        console.log('cronArr', value)
-        if (value === undefined || value.trim() === '') return DEFAULT_CRON.split(' ');
-        return value.trim().split(' ');
-    });
+    const [ready, setReady] = useState<boolean>(false);
+    const [cronArr, setCronArr] = useState<string[]>(DEFAULT_CRON.split(' '));
     const [tab, setTab] = useState<string>('second');
 
     useEffect(() => {
         // console.log('value.change', value)
-        if (value === undefined || value.trim() === '') return;
+        if (value === undefined || value.trim() === '') {
+            if (!ready) setReady(true);
+            return;
+        }
         handleChangeCron(value)
+        if (!ready) setReady(true);
     }, [value])
 
     useEffect(() => {
         // console.log('cronArr.change', cronArr)
         const newCron = cronArr.join(' ').trim()
         if (onChange && newCron !== value) {
-            onChange(newCron)
+            if (ready) onChange(newCron)
         }
     }, [cronArr])
 
