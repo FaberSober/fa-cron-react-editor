@@ -6,7 +6,8 @@ import { SlotType } from '../interface'
 
 
 export default function Year({ visible, value, onChange }: PanelBase) {
-    const [innerValue, setInnerValue] = useState<string|undefined>(value);
+    const [ready, setReady] = useState<boolean>(false);
+    const [innerValue, setInnerValue] = useState<string|undefined>('');
     const [type, setType] = useState<SlotType>(getSlotTypeYear(value));
 
     const [range0, setRange0] = useState<string>('2022');
@@ -24,7 +25,7 @@ export default function Year({ visible, value, onChange }: PanelBase) {
         
         if (newValue !== value) {
             setInnerValue(newValue)
-            onChange(newValue || '')
+            if (ready) onChange(newValue || '')
         }
     }, [type, range0, range1])
 
@@ -46,6 +47,7 @@ export default function Year({ visible, value, onChange }: PanelBase) {
             setRange0(ss[0])
             setRange1(ss[1])
         }
+        if (!ready) setReady(true)
     }, [value])
 
     return (

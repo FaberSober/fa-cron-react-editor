@@ -16,7 +16,8 @@ const WEEK_MAP:{[key:number]:string} = {
 }
 
 export default function Week({ visible, value, onChange }: PanelBase) {
-    const [innerValue, setInnerValue] = useState<string>(value);
+    const [ready, setReady] = useState<boolean>(false);
+    const [innerValue, setInnerValue] = useState<string>('');
     const [type, setType] = useState<SlotType>(getSlotTypeWeek(value));
 
     const [range0, setRange0] = useState<string>('1');
@@ -47,7 +48,7 @@ export default function Week({ visible, value, onChange }: PanelBase) {
         
         if (newValue !== value) {
             setInnerValue(newValue)
-            onChange(newValue)
+            if (ready) onChange(newValue)
         }
     }, [type, range0, range1, step0, step1, arr, weekL])
 
@@ -79,6 +80,7 @@ export default function Week({ visible, value, onChange }: PanelBase) {
             const newArr:number[] = ss.filter(i => (new Number(1) instanceof Number)).map(i => parseInt(i))
             setArr(newArr)
         }
+        if (!ready) setReady(true)
     }, [value])
 
     function handleChangeArrChecked(s: number) {

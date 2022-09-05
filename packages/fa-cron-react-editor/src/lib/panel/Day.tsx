@@ -6,7 +6,8 @@ import { SlotType } from '../interface'
 
 
 export default function Day({ visible, value, onChange }: PanelBase) {
-    const [innerValue, setInnerValue] = useState<string>(value);
+    const [ready, setReady] = useState<boolean>(false);
+    const [innerValue, setInnerValue] = useState<string>('');
     const [type, setType] = useState<SlotType>(getSlotTypeDay(value));
 
     const [range0, setRange0] = useState<string>('1');
@@ -39,7 +40,7 @@ export default function Day({ visible, value, onChange }: PanelBase) {
         
         if (newValue !== value) {
             setInnerValue(newValue)
-            onChange(newValue)
+            if (ready) onChange(newValue)
         }
     }, [type, range0, range1, step0, step1, arr, dayW])
 
@@ -73,6 +74,7 @@ export default function Day({ visible, value, onChange }: PanelBase) {
             const newArr:number[] = ss.filter(i => (new Number(1) instanceof Number)).map(i => parseInt(i))
             setArr(newArr)
         }
+        if (!ready) setReady(true)
     }, [value])
 
     function handleChangeArrChecked(s: number) {
