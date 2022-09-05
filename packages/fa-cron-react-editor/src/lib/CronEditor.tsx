@@ -31,7 +31,7 @@ export default function CronEditor({ value, onChange, style }: CronEditorProps) 
     }, [cronArr])
 
     function handleChangeCronArr(index: number, newValue: string) {
-        console.log('handleChangeCronArr', index, newValue)
+        // console.log('handleChangeCronArr', index, newValue)
         const newArr = [ ...cronArr ];
         newArr[index] = newValue;
         if (newArr.toString() !== cronArr.toString()) {
