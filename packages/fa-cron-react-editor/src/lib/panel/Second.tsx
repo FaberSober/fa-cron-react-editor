@@ -6,16 +6,17 @@ import { SlotType } from '../interface'
 
 
 export default function Second({ visible, value, onChange }: PanelBase) {
-    const [innerValue, setInnerValue] = useState<string>(value);
+    const [ready, setReady] = useState<boolean>(false);
+    const [innerValue, setInnerValue] = useState<string>('');
     const [type, setType] = useState<SlotType>(getSlotType(value));
 
-    const [range0, setRange0] = useState<string>(type === SlotType.RANGE ? value.split('-')[0] : '1');
-    const [range1, setRange1] = useState<string>(type === SlotType.RANGE ? value.split('-')[1] :'2');
+    const [range0, setRange0] = useState<string>('1');
+    const [range1, setRange1] = useState<string>('2');
 
-    const [step0, setStep0] = useState<string>(type === SlotType.STEP ? value.split('/')[0] : '0');
-    const [step1, setStep1] = useState<string>(type === SlotType.STEP ? value.split('/')[1] : '1');
+    const [step0, setStep0] = useState<string>('0');
+    const [step1, setStep1] = useState<string>('1');
 
-    const [arr, setArr] = useState<number[]>(type === SlotType.ITERATOR ? splitToNumbers(value) : [0]);
+    const [arr, setArr] = useState<number[]>([0]);
 
     useEffect(() => {
         let newValue = '';
@@ -31,7 +32,7 @@ export default function Second({ visible, value, onChange }: PanelBase) {
         
         if (newValue !== innerValue) {
             setInnerValue(newValue)
-            onChange(newValue)
+            if (ready) onChange(newValue)
         }
     }, [type, range0, range1, step0, step1, arr])
 
@@ -57,6 +58,7 @@ export default function Second({ visible, value, onChange }: PanelBase) {
             const newArr:number[] = splitToNumbers(value)
             setArr(newArr)
         }
+        if (!ready) setReady(true)
     }, [value])
 
     function handleChangeArrChecked(s: number) {
