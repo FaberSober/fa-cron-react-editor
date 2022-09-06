@@ -4,8 +4,8 @@ import './lib/CronEditor.css'
 import './App.css'
 
 function App() {
-    // const [cron, setCron] = useState<string>('* * * * * ?');
-    const [cron, setCron] = useState<string>('3-5 2-7 4-8 2-4 3-7 3/6 2023-2026');
+    const [cron, setCron] = useState<string>('* * * * * ?');
+    // const [cron, setCron] = useState<string>('3-5 2-7 4-8 2-4 3-7 3/6 2023-2026');
     // const [cron, setCron] = useState<string>('1,2 3,4,5 10,11 * * ?');
 
     return (

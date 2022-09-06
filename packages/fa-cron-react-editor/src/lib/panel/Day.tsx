@@ -45,8 +45,10 @@ export default function Day({ visible, value, onChange }: PanelBase) {
     }, [type, range0, range1, step0, step1, arr, dayW])
 
     useEffect(() => {
-        if (value === undefined || value === '') return;
-        if (value === innerValue) return;
+        if (value === undefined || value === '' || value === innerValue) {
+            if (!ready) setReady(true)
+            return;
+        }
 
         setInnerValue(value);
         if (value === '*') {

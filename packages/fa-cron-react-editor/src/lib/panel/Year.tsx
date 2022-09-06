@@ -31,10 +31,14 @@ export default function Year({ visible, value, onChange }: PanelBase) {
 
     useEffect(() => {
         if (value === undefined || value === '') {
+            if (!ready) setReady(true)
             setType(SlotType.NO_SPEC)
             return;
         }
-        if (value === innerValue) return;
+        if (value === innerValue) {
+            if (!ready) setReady(true)
+            return;
+        }
 
         setInnerValue(value);
         if (value === '*') {
